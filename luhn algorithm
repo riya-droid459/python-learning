@@ -1,0 +1,16 @@
+def verify_card_number(card_number):
+    card_number = card_number.replace("-", "")
+    card_number = card_number.replace(" ", "")
+    digits = []
+    for digit in card_number:
+        digits.append(int(digit))
+    for i in range(len(digits) - 2, -1, -2):
+        digits[i] = digits[i] * 2
+
+        if digits[i] > 9:
+            digits[i] = digits[i] - 9
+    total = sum(digits)
+    if total % 10 == 0:
+        return "VALID!"
+    else:
+        return "INVALID!"
